@@ -1,2 +1,4 @@
-db/**
-wp/src/**
+db/*
+!db/.gitkeep
+wp/src/*
+!wp/src/.gitkeep
