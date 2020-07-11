@@ -17,6 +17,10 @@ I'm new to Docker so if anything is wrong, please submit a PR (or just an Issue 
 2. ???
 3. Profit!
 
+-   Adminer is accessible on port `9000`: `http://localhost:9000`
+-   WordPress is accessible on port `80`: `http://localhost`
+-   The default MySQL database name is: `wp-practice`
+
 ## Big Warning
 
 **DO NOT** use this in production without creating a new user specifically for WordPress. Currently, it uses the `root` user with the password `example`.
