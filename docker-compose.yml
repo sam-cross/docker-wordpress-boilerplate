@@ -1,0 +1,37 @@
+# docker-compose.yml version, NOT product version
+version: "3"
+
+# List of services to start
+services:
+    # Start a container named "wp"
+    wp:
+        # Set the directory of the Dockerfile
+        build: wp/
+        # If db dies, this dies
+        depends_on:
+            - db
+        # Expose ports to other containers
+        expose:
+            - 80
+        # Set up ports as you would in CLI (HOST:CONTAINER)
+        ports:
+            - "80:80"
+        # Mount a list of volumes (HOST:CONTAINER)
+        volumes:
+            - ./wp/src:/var/www/html
+    db:
+        image: mysql:5.6
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        expose:
+            - 3306
+        volumes:
+            - ./db:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+    adminer:
+        image: adminer
+        depends_on:
+            - db
+        ports:
+            - "9000:8080"
